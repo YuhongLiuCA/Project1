@@ -1,0 +1,22 @@
+<template>
+    <!--Display one product item-->
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <h3 slot="title">                
+                {gproduct.Name}
+            </h3>
+            <div><img src={gproduct.Image__c}/></div>
+            <p><lightning-formatted-text value={gproduct.Description} ></lightning-formatted-text></p>
+            <div class="slds-text-heading_small slds-m-bottom_medium price_tag"><code>&#36;{gproduct.Price__c}</code></div>
+            <div slot="footer item_footer" class="slds-m-bottom_small slds-align_absolute-center">  
+                <lightning-button variant="brand" label="-" title="Primary action" class="slds-m-left_x-small item_button" onclick={reduceProductItem}></lightning-button>     
+                <input type="number" name="ItemNumber" value={itemQuantity} onchange={handleQuantityChange}/>
+                <lightning-button variant="brand" label="+" title="Primary action" class="slds-m-left_x-small item_button" onclick={addProductItem}></lightning-button>                
+            </div>     
+            
+            <p><lightning-formatted-text class="notificationText" value="Quantity" hidden={displayNotification}></lightning-formatted-text></p>
+             
+            <lightning-button variant="success" label="Add to Cart" title="Successful action" onclick={addToCart} class="slds-align_absolute-center "></lightning-button>   
+        </div>
+    </lightning-card>     
+</template>

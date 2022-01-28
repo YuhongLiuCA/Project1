@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_price</fullName>
+    <active>true</active>
+    <errorConditionFormula>Price__c  &lt; 0.50  ||  Price__c  &gt; 100</errorConditionFormula>
+    <errorMessage>The price must be within the range from $0.50 to $100.00</errorMessage>
+</ValidationRule>

@@ -1,0 +1,35 @@
+<template>    
+
+    <!--Main App for order generation-->
+    <div class="tab-set-all">
+    <lightning-tabset active-tab-value="Product" >
+        <lightning-tab label="Product" value="Product" class="slds-m-top_small">
+            <div class="account-and-cart">
+                <lightning-combobox  class="AccountListSelection" name="Account" label="Account" value={accountValue} options={optionList} onchange={handleAccountChange} >
+                </lightning-combobox>
+                <div class="cart-icon-group" onclick={handleProductCartChange}>
+                    <div class="cart-icon-quantity">{cartRecord.Quantity__c}</div>
+                    <lightning-icon icon-name="utility:cart" size="large" variant="success"></lightning-icon>
+                    <p class="cart-icon-price">&#36;{cartRecord.Total_price__c}</p>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-m-top_small product-items">      
+                <template if:true={displayProduct}>
+                    <template for:each={groceryProducts} for:item="gproduct" for:index="index">
+                        <c-product-item gproduct={gproduct} key={gproduct.Name} onadditem={addItem}></c-product-item>
+                    </template>
+                </template>         
+            </div>
+        </lightning-tab>
+
+        <lightning-tab label="Cart" value="Cart" class="slds-m-top_small">
+            <template if:true={cartItems}>
+                <c-cart-item gcart={cartItems} onplaceorder={placeOrder} ondeleteitem={handleDeleteItem} onquantitychange={hanldeQuantityChange}></c-cart-item>
+            </template>  
+        </lightning-tab>
+
+    </lightning-tabset>  
+    </div>
+
+</template>

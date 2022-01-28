@@ -1,0 +1,42 @@
+img {
+    height: 120px;
+    border-radius: 10px;
+    margin-bottom: 2px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item_footer {
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+input {
+    width: 6em;
+    height: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+}
+h3 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3px;
+}
+p {
+    text-align: center;
+}
+.item_button {
+    margin-left: 4px;
+    margin-right: 4px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+.price_tag {
+    text-align: center;
+}
+.notificationText {
+    font-weight: bold;
+    font-size: 1rem;
+    color: green;
+}

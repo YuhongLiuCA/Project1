@@ -1,0 +1,33 @@
+.account-and-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.cart-icon-group {
+    margin-right: 4rem;
+}
+.cart-icon-group :hover{
+    cursor: pointer;
+}
+
+.AccountListSelection {
+    margin-left: 4rem;
+}
+.cart-icon-quantity{
+    background-color: greenyellow;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+}
+.cart-icon-price{
+    text-align: center;
+}
+
+.product-items {
+    justify-content: space-evenly;
+}
+
+.tab-set-all {
+    background-color: white;
+}
