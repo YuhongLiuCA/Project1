@@ -17,6 +17,7 @@
     "sfdcLoginUrl": "https://wise-panda-dgodze-dev-ed.my.salesforce.com/",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "GroceryPackage": "0Ho5f0000008OigCAE"
+        "GroceryPackage": "0Ho5f0000008OigCAE",
+        "GroceryPackage@0.1.0-1": "04t5f000000vN8iAAE"
     }
 }
