@@ -1,11 +1,12 @@
 import { LightningElement, wire, api, track  } from 'lwc';
 import GetProducts from "@salesforce/apex/ProductController.GetProducts";
+import SaveProducts from "@salesforce/apex/ProductController.SaveProducts";
 import GetAccountList from "@salesforce/apex/AccountController.GetAccountList"; 
 import SaveCarts from "@salesforce/apex/CartController.SaveCarts"; 
 import getCart from '@salesforce/apex/CartController.getCart';
 import SaveItems from "@salesforce/apex/ItemController.SaveItems"; 
 import My_Resource from '@salesforce/resourceUrl/myResource';
-import Grape from '@salesforce/resourceUrl/myResource';
+
 
 export default class CartApp extends LightningElement {
     @track groceryProducts = [];
@@ -22,6 +23,30 @@ export default class CartApp extends LightningElement {
     @track optionList = [];
     accountValue = '';
     displayNotification = true;
+
+    constructor() {
+        super();
+        //Initialize 5 products if no products in Database
+        GetProducts()
+          // Callback on a response
+          .then((result) => {
+            this.groceryProducts = [...result];
+            let fruits = [{Name: "Apple", ProductCode: "001", Category__c:"NewArrival", Image__c: "Apple.jpg",Price__c: 2.75, Description:"A pound of apple", Quantity__c: 1600,StockQuantity__c: 1600},
+            {Name: "Pear", ProductCode: "002", Category__c:"BestSeller", Image__c: "Pear.jpg",Price__c: 1.75, Description:"A pound of pear", Quantity__c: 1800,StockQuantity__c: 1800}
+                    //{name: "Pear",image:"Pear.jpg",price:1.75,quantity:0,inc:"PearInc",dec:"PearDec",category:"BestSeller"},
+                    //{name: "Banana",image:"Bananas.jpg",price:0.99,quantity:0,inc:"BananaInc",dec:"BananaDec",category:"OnSale"},
+                    //{name: "Orange",image:"Oranges.jpg",price:1.09,quantity:0,inc:"OrangeInc",dec:"OrangeDec",category:"OnSale"},
+                    //{name: "Grape",image:"Grapes.jpg",price:3.99,quantity:0,inc:"GrapeInc",dec:"GrapeDec",category:""}
+            ];
+            if(this.groceryProducts.length === 0) {
+                SaveProducts({newProducts: fruits});
+            }
+          })
+          // Callback if there's an error
+          .catch((error) => {
+            console.log(error);
+          }); 
+    }
 
     //Add item into cart handler
     addItem(event) {
