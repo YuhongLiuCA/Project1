@@ -40,6 +40,19 @@ export default class CartApp extends LightningElement {
             ];
             if(this.groceryProducts.length === 0) {
                 SaveProducts({newProducts: fruits});
+            } else {
+                //Judge if current Database has grocery products or not, if not save default products
+                let groceryExist = 0;
+                for(let i = 0; i < this.groceryProducts.length; i++) {
+                    if(this.groceryProducts.Quantity__c === null) {
+                        continue;
+                    } else {
+                        groceryExist = 1;
+                    }
+                }
+                if(groceryExist === 0){
+                    SaveProducts({newProducts: fruits});
+                }
             }
           })
           // Callback if there's an error
